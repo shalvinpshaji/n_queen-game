@@ -99,8 +99,14 @@ def main(n):
         board.append([0]*n) 
     while p < len(board):
         printboard(board)
-        i, j = map(int, input().split())
-        board, p = play(board, i-1, j-1, p)
+        try:
+            i, j = map(int, input().split())
+            if i <= n and j <= n:
+                board, p = play(board, i-1, j-1, p)
+            else:
+                print("Slot number must be less than {}".format(n))
+        except ValueError:
+            print("Not valid Try again ")
     printboard(board)
 
 
